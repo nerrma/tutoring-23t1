@@ -10,6 +10,8 @@ This also allows you to fork and make your own changes to the slides.
 
 # Making your own slides
 
+Please fork the repo so you can make your own changes separate from mine.
+
 ## Dependencies
 
 This is likely the most painful part of the process, but once it's working, you'll never need to touch it again.

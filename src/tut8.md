@@ -16,10 +16,11 @@ header-includes: |
 	\tikzset{input/.style={basic,circle}}
 	\tikzset{weights/.style={basic,rectangle}}
 	\tikzset{functions/.style={basic,circle,fill=blue!10}}
-title:
-- Unsupervised Learning + Revision
-author:
-- COMP9417, 22T2
+title: "Unsupervised Learning + Revision"
+author: "COMP9417, 23T1"
+theme: "Frankfurt"
+colortheme: "beaver"
+fonttheme: "professionalfonts"
 ---
 
 # Unsupervised Learning

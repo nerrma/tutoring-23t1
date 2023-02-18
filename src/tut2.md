@@ -10,10 +10,11 @@ header-includes: |
 	\DeclareMathOperator*{\argmax}{arg\,max}
 	\DeclareMathOperator*{\argmin}{arg\,min}
     \newcommand{\mle}[1]{\hat{#1}_{\text{MLE}}}
-title:
-- Regression II
-author:
-- COMP9417, 22T2
+title: "Regression II"
+author: "COMP9417, 23T1"
+theme: "Frankfurt"
+colortheme: "beaver"
+fonttheme: "professionalfonts"
 ---
 
 # Stats, stats, stats \ldots

@@ -10,10 +10,11 @@ header-includes: |
 	\graphicspath{ {./images/} }
 	\DeclareMathOperator*{\argmax}{arg\,max}
 	\DeclareMathOperator*{\argmin}{arg\,min}
-title:
-- Non Parametric Methods
-author:
-- COMP9417, 22T2
+title: "Non Parametric Methods"
+author: "COMP9417, 23T1"
+theme: "Frankfurt"
+colortheme: "beaver"
+fonttheme: "professionalfonts"
 ---
 # Non Parametric Methods
 

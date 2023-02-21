@@ -424,10 +424,7 @@ Recall the inverse of a matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
 
 ## 2e - Lab
 
-\begin{center}
-  Onto Jupyter.
-\end{center}
-
+Given $x_1, \cdots, x_5 = 3, 6, 7, 8, 11$ and $y_1, \cdots, y_5 = 13, 8, 11, 2, 6$ compute the least squares solution by hand and using Python. Check your results with the sklearn implementation.
 
 ## 2g
 

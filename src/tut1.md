@@ -247,7 +247,7 @@ Then, let's define our entire feature set $X$ as:
 So, 
 \begin{equation*}
 \begin{aligned}
-	Xw &= \begin{bmatrix} w_0 & w_1 x_{11} \\ w_0 & w_1 x_{21} \\ \vdots & \vdots \\ w_0 & w_1 x_{n1} \end{bmatrix} \\
+	Xw &= \begin{bmatrix} w_0 + w_1 x_{11} \\ w_0 + w_1 x_{21} \\ \vdots \\ w_0 + w_1 x_{n1} \end{bmatrix} \\
 	\hat{y} &= Xw
 \end{aligned}
 \end{equation*}

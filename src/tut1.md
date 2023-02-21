@@ -17,6 +17,9 @@ fonttheme: "professionalfonts"
 
 # Intro
 
+Who am I? \pause
+Who are you? \pause
+
 What you'll get from this course:
 
 - Understand the basis of machine learning
@@ -66,10 +69,13 @@ We can generalise this to a function in nicer form:
 	L(\hat{y}) &= \sum_{i=1}^n (y_i - \hat{y_i})
 \end{align*}
 
+\pause
+Something is wrong here.
+
 
 ---
 
-Formally, we define our loss function as:
+Formally, we define our error/loss function as:
 
 \begin{align*}
 	L(\hat{y}) &= \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y_i})^2 & \text{ a.k.a MSE } \\
@@ -86,8 +92,8 @@ Derive the least-squares estimates for the univariate linear regression model.
 
 i.e Solve:
 \begin{align*}
-	\argmin_{w_0, w_1}& L(w_0, w_1) \\
-	\argmin_{w_0, w_1}& \frac{1}{n} \sum_{i=1}^n (y_i - w_0 - w_1 x_i)^2 \\
+	\argmin_{w_0, w_1}& \quad L(w_0, w_1) \\
+	\argmin_{w_0, w_1}& \quad \frac{1}{n} \sum_{i=1}^n (y_i - w_0 - w_1 x_i)^2 \\
 \end{align*}
 
 ---
@@ -360,16 +366,21 @@ $w = \begin{bmatrix} w_0 \\ w_1 \end{bmatrix}$ to represent the parameters
 \begin{aligned}
 	X &= \begin{bmatrix} 1 & x_{11} \\ 1 & x_{21} \\ \vdots & \vdots \\1 & x_{n1} \end{bmatrix} \\
 	X^T y &= \begin{bmatrix} 1 & 1 &\cdots& 1 \\ x_{11} &x_{21} &\cdots &x_{n1}  \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix}\\
-	X^T y &= \begin{bmatrix} n \bar{y} \\ n \overline{xy} \end{bmatrix}
+	\pause
+	&= \begin{bmatrix} n \bar{y} \\ n \overline{xy} \end{bmatrix}
 \end{aligned}
 \end{equation*}
 ::::
+
+\pause
 
 :::: column
 \begin{equation*}
 \begin{aligned}
 	X^T X &= \begin{bmatrix} 1 & 1 &\cdots& 1 \\ x_{11} &x_{21} &\cdots &x_{n1}  \end{bmatrix} \begin{bmatrix} 1 & x_{11} \\ 1 & x_{11} \\ \vdots & \vdots \\1 & x_{n1} \end{bmatrix} \\
+	\pause
 	&= \begin{bmatrix} n & \sum_{i=1}^n x_i \\ \sum_{i=1}^n x_i & \sum_{i=1}^n x_i^2 \end{bmatrix} \\
+	\pause
 	&= \begin{bmatrix} n & n \bar{x} \\ n \bar{x} & n \overline{x^2} \end{bmatrix}
 \end{aligned}
 \end{equation*}
@@ -379,19 +390,34 @@ $w = \begin{bmatrix} w_0 \\ w_1 \end{bmatrix}$ to represent the parameters
 
 ---
 
+We have:
 \begin{equation*}
 \begin{aligned}
 	X^T X &= \begin{bmatrix} n & n \bar{x} \\ n \bar{x} & n\overline{x^2} \end{bmatrix} \\
+\end{aligned}
+\end{equation*}
+
+\pause
+
+Recall the inverse of a matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$ is $A^{-1} = \frac{1}{ad - bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$.
+
+\pause
+
+\begin{equation*}
+\begin{aligned}
 	(X^T X)^{-1} &= \frac{1}{n^2\overline{x^2} - n^2 \bar{x}^2}\begin{bmatrix} n \overline{x^2} & -n \bar{x} \\ -n \bar{x} & n \end{bmatrix} \\
 	&= \frac{1}{n(\overline{x^2} - \bar{x}^2)}\begin{bmatrix} \overline{x^2} & -\bar{x} \\ -\bar{x} & 1 \end{bmatrix} \\
 \end{aligned}
 \end{equation*}
 
 ## 2d
+
 \begin{equation*}
 \begin{aligned}
 	(X^T X)^{-1} X^T y &= \frac{1}{n(\overline{x^2} - \bar{x}^2)}\begin{bmatrix} \overline{x^2} & -\bar{x} \\ -\bar{x} & 1 \end{bmatrix} \begin{bmatrix} n \bar{y} \\ n \overline{xy} \end{bmatrix} \\
+	\pause
 	&= \frac{1}{\overline{x^2} - \bar{x}^2}\begin{bmatrix} \overline{x^2}\bar{y} - \bar{x} \overline{xy} \\ \overline{xy} - \bar{x} \bar{y} \end{bmatrix} \\
+	\pause
 	&= \begin{bmatrix} \bar{y} - \hat{w}_1 \bar{x} \\ \frac{\overline{xy} - \bar{x} \bar{y}}{\overline{x^2} - \bar{x}^2} \end{bmatrix}
 \end{aligned}
 \end{equation*}
@@ -408,6 +434,6 @@ $w = \begin{bmatrix} w_0 \\ w_1 \end{bmatrix}$ to represent the parameters
 MSE$\displaystyle (w) = \argmin_{w} \frac{1}{n} \norm{y - X w}_{2}^{2}$ and SSE$\displaystyle (w) = \argmin_{w} \norm{y - X w}_{2}^{2}$
 
 
-**i)** Is the minimiser of MSE and SSE the same?
+**i)** Is the minimiser of MSE and SSE the same? 
 
 **ii)** Is the minimum value of MSE and SSE the same?

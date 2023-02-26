@@ -25,7 +25,7 @@ A probability distribution represents the probability we see a value $x$ in a sa
 
 ### Definition
 - Probability *mass* function applies to discrete $X$
-- Probability *density* function applies to continous $X$
+- Probability *density* function applies to continuous $X$
 
 ---
 
@@ -56,7 +56,11 @@ For random variables $X, Y$ and a constant $c$
 ### Example
 **Problem:** Model the probability mass function and find the expected value of the roll of a dice.
 
+\pause
+
 - $P(X = 1) = \frac{1}{6}$, $P(X = 2) = \frac{1}{6}$, \ldots, $P(X = 6) = \frac{1}{6}$
+
+\pause
 
 \vspace{12pt}
 For the expected value:
@@ -129,6 +133,8 @@ This makes differentiating, and therefore maximising much easier.
 
 **Problem**: Given $X_1, \cdots, X_n \sim N(\mu, 1)$, find $\hat{\mu}_{\text{MLE}}$.
 
+\pause
+
 First, we define our likelihood function:
 
 \begin{align*}
@@ -140,6 +146,8 @@ First, we define our likelihood function:
 ---
 
 Next, we differentiate with respect to our parameter $\mu$,
+
+\pause
 
 \vspace{-.5cm}
 \begin{align*}
@@ -163,6 +171,8 @@ The Bernoulli distribution models processes with 2 outcomes (eg. a coin toss).
   P(X = k) &= p^{k}(1-p)^{1-k}, \quad\quad k=0,1 \quad p \in [0,1]
 \end{align*}
 
+\pause
+
 First, we define our likelihood function:
 
 \vspace{-.5cm}
@@ -176,10 +186,15 @@ First, we define our likelihood function:
 
 Next, we differentiate with respect to our parameter $p$,
 
+\pause
+
 \vspace{-.5cm}
 \begin{align*}
     \frac{\partial\log L(p)}{\partial p} &= \frac{n \bar{X}}{p} - \frac{n(1-\bar{X})}{1-p} \\
-    \frac{\partial\log L(p)}{\partial\hat{p}} = 0 & \text{ at the maximum. So, } \\
+\end{align*}
+$\frac{\partial\log L(p)}{\partial\hat{p}} = 0$  at the maximum. So,
+\pause
+\begin{align*}
     \frac{n \bar{X}}{\hat{p}} - \frac{n(1-\bar{X})}{1-\hat{p}} &= 0 \\
     n \bar{X} - n \bar{X}\hat{p} &= n(1-\bar{X})\hat{p} \\
      \hat{p}(n(1-\bar{X}) + n \bar{X}) &=n \bar{X}  \\
@@ -214,6 +229,9 @@ When applying this to a model, we'll discover that a large variance and a low bi
 *Problem*: Find the bias and variance of $\mle{\mu}$ for $X \sim N(\mu, 1)$.
 
 We know that $\mle{\mu} = \bar{X}$. So,
+
+\pause
+
 \begin{align*}
   \text{bias}(\bar{X}) &= \mathbb{E}(\bar{X}) - \mu \\
   &= \frac{1}{n} \mathbb{E}\left(\sum_{i=0}^{n}X_{i}\right) - \mu \\
@@ -224,11 +242,15 @@ We know that $\mle{\mu} = \bar{X}$. So,
 
 ---
 
+Now, for the variance:
+
+\pause
+
 \begin{align*}
   \text{var}(\hat{\mu}) &= \text{var}(\bar{X}) \\
   &= \text{var}\left(\frac{1}{n} \sum_{i=0}^{n}\mathbb{E}(X_{i}) \right) \\
-  &= \frac{1}{n^{2}} \sum_{i=0}^{n}\text{var}(\mathbb{E}(X_{i})) \\
-  &= \frac{1}{n^{2}} n = \frac{1}{n}
+  \only<3->{&= \frac{1}{n^{2}} \sum_{i=0}^{n}\text{var}(\mathbb{E}(X_{i}))} \\
+  \only<3->{&= \frac{1}{n^{2}} n = \frac{1}{n}}
 \end{align*}
 
 
@@ -246,10 +268,14 @@ We know that $\mle{p} = \overline{X}$, so
 
 ---
 
+Now, for the variance:
+
+\pause
+
 \begin{align*}
-  var(\mle{p}) &= var(\bar{X}) \\
-  &= var\left( \frac{1}{n} \sum_{i=1}^{n} x_{i} \right) \\
-  &=\frac{1}{n^{2}} \sum_{i=1}^{n}  var\left( x_{i} \right) \\
+  \text{var}(\mle{p}) &= \text{var}(\bar{X}) \\
+  &= \text{var}\left( \frac{1}{n} \sum_{i=1}^{n} x_{i} \right) \\
+  &=\frac{1}{n^{2}} \sum_{i=1}^{n}  \text{var}\left( x_{i} \right) \\
  &=\frac{1}{n^{2}} np(1-p) \\
   &= \frac{p(1-p)}{n}\\
 \end{align*}
@@ -258,15 +284,21 @@ We know that $\mle{p} = \overline{X}$, so
 
 Perform bias-variance decomposition i.e prove that MSE$(\hat{\theta}) =$bias$(\hat{\theta})^{2}$ + var$(\hat{\theta})$.
 
+We are given the definition $\text{MSE}(\hat{\theta}) = \mathbb{E}\left[(\hat{\theta} - \theta)^{2}\right]$.
+
+\pause
+
 \begin{align*}
   \text{MSE}(\hat{\theta}) &= \mathbb{E}\left[(\hat{\theta} - \theta)^{2}\right] \\
-  &= \mathbb{E}\left[ \left( \hat{\theta} - \mathbb{E}(\hat{\theta}) + \mathbb{E}(\hat{\theta}) - \theta\right)^{2}\right] \\
-  &= \mathbb{E}\left[(\hat{\theta} - \mathbb{E}(\hat{\theta}))^{2} + 2(\hat{\theta} - \mathbb{E}(\hat{\theta}))(\mathbb{E}(\hat{\theta}) - \theta) + (\mathbb{E}(\hat{\theta}) - \theta)^{2}\right] \\
-  &= \mathbb{E}(\hat{\theta} - \mathbb{E}(\hat{\theta}))^{2} + 2\mathbb{E}[(\hat{\theta} - \mathbb{E}(\hat{\theta}))(\mathbb{E}(\hat{\theta}) - \theta)] + \mathbb{E}((\mathbb{E}(\hat{\theta}) - \theta)^{2}) \\
-  &= \mathbb{E}(\hat{\theta} - \mathbb{E}(\hat{\theta}))^{2} + 2(\mathbb{E}(\hat{\theta}) - \mathbb{E}(\hat{\theta}))(\mathbb{E}(\hat{\theta}) - \mathbb{E}(\theta)) + \mathbb{E}((\mathbb{E}(\hat{\theta}) - \theta)^{2}) \\
+  \only<3->{&= \mathbb{E}\left[ \left( \hat{\theta} - \mathbb{E}(\hat{\theta}) + \mathbb{E}(\hat{\theta}) - \theta\right)^{2}\right]} \\
+  \only<4->{&= \mathbb{E}\left[(\hat{\theta} - \mathbb{E}(\hat{\theta}))^{2} + 2(\hat{\theta} - \mathbb{E}(\hat{\theta}))(\mathbb{E}(\hat{\theta}) - \theta) + (\mathbb{E}(\hat{\theta}) - \theta)^{2}\right]} \\
+  \only<4->{&= \mathbb{E}(\hat{\theta} - \mathbb{E}(\hat{\theta}))^{2} + 2\mathbb{E}[(\hat{\theta} - \mathbb{E}(\hat{\theta}))(\mathbb{E}(\hat{\theta}) - \theta)] + \mathbb{E}((\mathbb{E}(\hat{\theta}) - \theta)^{2})} \\
+  \only<4->{&= \mathbb{E}(\hat{\theta} - \mathbb{E}(\hat{\theta}))^{2} + 2(\mathbb{E}(\hat{\theta}) - \mathbb{E}(\hat{\theta}))(\mathbb{E}(\hat{\theta}) - \mathbb{E}(\theta)) + \mathbb{E}((\mathbb{E}(\hat{\theta}) - \theta)^{2})} \\
 \end{align*}
 
 ---
+
+Finally,
 
 \begin{align*}
   &= \mathbb{E}(\hat{\theta} - \mathbb{E}(\hat{\theta}))^{2} + \mathbb{E}(\mathbb{E}(\hat{\theta}) - \theta)^{2} \\
@@ -288,9 +320,13 @@ So,
   y|x \sim N(x^{T} \beta^{*}, \sigma^{2})
 \end{align*}
 
+We are asked to solve for $\mle{\beta}$ i.e find $\mle{\beta} = \argmax_{\beta} L(\beta)$.
+
 ---
 
 For multiple $x_{i}$, we typically write $y|X \sim N(X^{T} \beta^{*}, \sigma^{2} I)$ for our input matrix $X$.
+
+\pause
 
 Our log likelhood will be,
 \begin{align*}
@@ -311,9 +347,9 @@ So, to find $\mle{\beta}$, we solve:
 
 \vspace{-0.5cm}
 \begin{align*}
-  \mle{\beta} &= \argmax_{\beta} -\frac{n}{2}\log(2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}} \norm{y - X\beta}_{2}^{2} \\
-  &= \argmax_{\beta} - \frac{1}{2\sigma^{2}} \norm{y - X\beta}_{2}^{2} \\
-  &= \argmin_{\beta} \norm{y - X\beta}_{2}^{2}
+  \mle{\beta} &= \argmax_{\beta} \left(-\frac{n}{2}\log(2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}} \norm{y - X\beta}_{2}^{2} \right) \\
+  \only<3->{&= \argmax_{\beta} - \frac{1}{2\sigma^{2}} \norm{y - X\beta}_{2}^{2}} \\
+  \only<4->{&= \argmin_{\beta} \norm{y - X\beta}_{2}^{2}}
 \end{align*}
 
 ---

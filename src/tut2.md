@@ -107,6 +107,8 @@ We typically write $X \sim \mathcal{N}(\mu, \sigma^2)$ to say $X$ is normally di
 
 ## Maximum Likelihood Estimation
 
+\pause
+
 Maximum likelihood estimation is the process of estimating the parameters of a distribution of sample data by maximising the overall likelihood of the samples occuring in the distribution.
 
 \begin{align*}
@@ -126,7 +128,7 @@ To make life easier, we typically work with the log of the likelhood function (l
     &= \sum_{i=1}^n \log p_\theta (X_i) \\
 \end{align*}
 
-This makes differentiating, and therefore maximising much easier.
+This makes differentiating, and therefore maximising much simpler.
 
 # 1 (a, b)
 ## 1a

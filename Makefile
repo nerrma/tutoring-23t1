@@ -1,9 +1,7 @@
 TEXS = $(wildcard src/*.md)
 SLIDES = $(patsubst src/%.md, slides/slides_%.pdf, $(TEXS))
-NOTES = $(patsubst src/%.md, notes/%.pdf, $(TEXS))
 
 all: $(SLIDES)
-notes: $(NOTES)
 
 slides/slides_%.pdf: src/%.md
 	cd src && \

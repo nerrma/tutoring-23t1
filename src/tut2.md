@@ -336,18 +336,22 @@ Our log likelhood will be,
 \begin{align*}
   \log L(\beta) &= \log P(y|X, \beta) \\
   &= \log \left( \prod_{i=1}^{n} P(y_{i}|x_{i}, \beta) \right)\\
-  &= \sum_{i=1}^{n} \log P(y_{i}|x_{i}, \beta) \\
-  &= \sum_{i=1}^{n} \log \left( \frac{1}{\sqrt{2\pi \sigma^{2}}} \exp \left( -\frac{(y_{i} - x_{i}^{T} \beta)^{2}}{2\sigma^2}  \right) \right) \\
+  \only<3->{&= \sum_{i=1}^{n} \log P(y_{i}|x_{i}, \beta)} \\
+  \only<4->{&= \sum_{i=1}^{n} \log \left( \frac{1}{\sqrt{2\pi \sigma^{2}}} \exp \left( -\frac{(y_{i} - x_{i}^{T} \beta)^{2}}{2\sigma^2}  \right) \right)} \\
 \end{align*}
 
 ---
 
 \begin{align*}
   &= n\log(\frac{1}{\sqrt{2\pi \sigma^{2}}}) - \frac{1}{2\sigma^{2}} \sum_{i=1}^{n} (y_{i} - x_{i}^{T} \beta)^{2} \\
-  &= -\frac{n}{2}\log(2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}} \norm{y - X\beta}_{2}^{2}
+  \only<2->{&= -\frac{n}{2}\log(2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}} \norm{y - X\beta}_{2}^{2}}
 \end{align*}
 
+\pause
+
 So, to find $\mle{\beta}$, we solve:
+
+\pause
 
 \vspace{-0.5cm}
 \begin{align*}

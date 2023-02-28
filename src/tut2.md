@@ -251,7 +251,7 @@ Now, for the variance:
 \begin{align*}
   \text{var}(\hat{\mu}) &= \text{var}(\bar{X}) \\
   &= \text{var}\left(\frac{1}{n} \sum_{i=0}^{n}\mathbb{E}(X_{i}) \right) \\
-  \only<3->{&= \frac{1}{n^{2}} \sum_{i=0}^{n}\text{var}(\mathbb{E}(X_{i}))} \\
+  \only<3->{&= \frac{1}{n^{2}} \sum_{i=0}^{n}\text{var}(X_{i})} \\
   \only<3->{&= \frac{1}{n^{2}} n = \frac{1}{n}}
 \end{align*}
 
@@ -263,7 +263,7 @@ Find the bias and variance of $\mle{p}$ for $X \sim$ Bernoulli$(p)$.
 We know that $\mle{p} = \overline{X}$, so
 
 \begin{align*}
-  bias(\mle{p}) &= \mathbb{E}(\mle{p}) - \mu \\
+  \text{bias}(\mle{p}) &= \mathbb{E}(\mle{p}) - \mu \\
   &= \overline{X} - \mu \\
   &= 0 \\
 \end{align*}
@@ -271,6 +271,8 @@ We know that $\mle{p} = \overline{X}$, so
 ---
 
 Now, for the variance:
+
+*Note that the variance of an r.v. with a Bernoulli($p$) dist. is $p(1-p)$*
 
 \pause
 

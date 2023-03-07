@@ -179,8 +179,8 @@ First, we define our likelihood function:
 
 \vspace{-.5cm}
 \begin{align*}
-    \log L(p) &= \log \left( \prod_{i=1}^n p^{X_i}(1-p)^{X_{i}} \right) \\
-    &= \sum_{i=1}^{n} \log p^{X_i} + \sum_{i=1}^{n} \log (1-p)^{X_{i}} \\
+    \log L(p) &= \log \left( \prod_{i=1}^n p^{X_i}(1-p)^{1-X_{i}} \right) \\
+    &= \sum_{i=1}^{n} \log p^{X_i} + \sum_{i=1}^{n} \log (1-p)^{1-X_{i}} \\
     &= n \bar{X} \log p + n(1-\bar{X})\log(1-p)
 \end{align*}
 

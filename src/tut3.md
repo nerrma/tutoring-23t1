@@ -207,6 +207,13 @@ so, instead of estimating an $p$ dimensional distribution as we did with conditi
 
 To estimate our probabilities:
 
+:::: columns
+::: column
+\begin{centering}
+	\includegraphics[scale=0.95]{tut3_bernoullifreq.png}
+\end{centering}
+:::
+::: column
 \begin{align*}
 	p_j^k = \frac{\text{no. docs. in class } k \text{ that contain } j}{\text{no. docs. in class } k}
 \end{align*}
@@ -218,6 +225,9 @@ To estimate our probabilities:
 	p_b^+ = \frac{3}{4} \quad p_b^- = \frac{1}{4} \\
 	p_c^+ = \frac{1}{4} \quad p_c^- = \frac{1}{4} \\
 \end{align*}
+:::
+
+::::
 
 ---
 
@@ -233,9 +243,9 @@ For the positive class:
 \begin{align*}
 	p(c_+) p(\mathbf{x}^{e} | c_+) &= p(c_+) \prod_{j \in \{a, b, c\}} p(x_j = x^{e}_j | c_+) \\
 	&= p(c_+) \times p(x_a = 1 | c_+) \times p(x_b = 1 | c_+) \times p(x_c = 0 | c_+) \\
-	&= p(c_+) \times p_a^+ \times p_b^+ \times (1 - p_c^+) \\
-	&= \frac{1}{2} \times \frac{2}{4} \times \frac{3}{4} \times (1 - \frac{1}{4}) \\
-	&= \frac{9}{64}
+	\only<3->{&= p(c_+) \times p_a^+ \times p_b^+ \times (1 - p_c^+)} \\
+	\only<4->{&= \frac{1}{2} \times \frac{2}{4} \times \frac{3}{4} \times (1 - \frac{1}{4})} \\
+	\only<5->{&= \frac{9}{64}}
 \end{align*}
 
 ---
@@ -288,7 +298,7 @@ c) The same as a), though now using a multinomial distribution instead of a Bern
 
 The classic multinomial distribution is:
 \begin{align*}
-	P(X = (x_1, \cdots, x_n)) = \frac{n!}{\prod_{i=1}^k x_i!} \prod_{j \in V} \theta_{i}^{x_i}
+	P(X = (x_1, \cdots, x_n)) = \frac{n!}{\prod_{i=1}^k x_i!} \prod_{i = 1}^k \theta_{i}^{x_i}
 \end{align*}
 
 Applied to a naive Bayes classifier:
@@ -303,7 +313,7 @@ Applied to a naive Bayes classifier:
 ::: column
 
 \begin{center}
-	\includegraphics[scale=0.6]{tut3_p2c3.png}
+	\includegraphics[scale=0.8]{tut3_p2c3.png}
 \end{center}
 :::
 
@@ -330,10 +340,11 @@ Our data is $x^e = (1, 4, 2)$, if we substitute our values:
 \begin{align*}
 	p(c_+) p(\mathbf{x} | c_+) &= p(c_+) \frac{n!}{\prod_{j \in V} x_j!} \prod_{j \in V} p(x_j | c_k) ^ {x_j} \\
 	&= \frac{1}{2} \times \frac{7!}{1! \times 4! \times 2!} \left( (\theta_{a}^+)^1 \times (\theta_{b}^+)^4 \times (\theta_{c}^+)^2 \right)  \\
-	&= \frac{1}{2} \times \frac{7!}{1! \times 4! \times 2!} \left( \frac{5}{17} \times (\frac{9}{17})^4 \times (\frac{3}{17})^2 \right)  \\
-	&= 0.0377
+	\only<2->{&= \frac{1}{2} \times \frac{7!}{1! \times 4! \times 2!} \left( \frac{5}{17} \times \left(\frac{9}{17}\right)^4 \times \left(\frac{3}{17}\right)^2 \right)}  \\
+	\only<3->{&= 0.0377}
 \end{align*}
 
+\pause
 \pause
 
 We can apply the same logic for the negative case and find that,

@@ -64,7 +64,7 @@ We can simply apply the law of total probability:
 
 ---
 
-**b) Calculate the probability of begin infected with the disease, given that the test is positive.**
+**b) Calculate the probability of being infected with the disease, given that the test is positive.**
 
 We need to find $P(D | T)$.
 
@@ -255,7 +255,7 @@ For the negative case:
 \pause
 
 \begin{align*}
-	p(c_-) p(\mathbf{x}^{e} | c_+) &= p(c_-) \prod_{j \in \{a, b, c\}} p(x_j = x^{e}_j | c_+) \\
+	p(c_-) p(\mathbf{x}^{e} | c_-) &= p(c_-) \prod_{j \in \{a, b, c\}} p(x_j = x^{e}_j | c_-) \\
 	&= p(c_-) \times p(x_a = 1 | c_-) \times p(x_b = 1 | c_-) \times p(x_c = 0 | c_-) \\
 	&= p(c_-) \times p_a^- \times p_b^- \times (1 - p_c^-) \\
 	&= \frac{1}{2} \times \frac{3}{4} \times \frac{1}{4} \times (1 - \frac{1}{4}) \\

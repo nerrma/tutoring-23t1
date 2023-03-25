@@ -417,39 +417,159 @@ Our final problem now has relaxed constraints:
    &\alpha_{i} \geq 0 \text{ for } i = 1, \ldots, n\\
 \end{align*}
 
+# Question 7
 
-## Soft Margin SVM
-
-Our current model is a **maximum** or hard margin classifier. To allow for errors *within* the supporting hyperplanes, we can redefine the primal problem as:
+Given data $\mathbf{X}$ and targets $\mathbf{y}$, with transformed data $\mathbf{X'}$.
 
 \begin{align*}
-  \argmin_{w, t, \xi} \frac{1}{2} \norm{w}^{2} + C \sum_{i=1}^{n} \xi_{i} && \text{subject to } y_{i} (\langle x_{i}, w \rangle - t) \geq 1 - \xi_{i} \text{ where } \xi_{i} \geq 0
+  \mathbf{X} &= \begin{bmatrix} 1 & 3 \\ 2 & 1 \\ 0 & 1 \end{bmatrix} \quad \quad
+  \mathbf{X'} = \begin{bmatrix} 1 & 3 \\ 2 & 1 \\ 0 & -1 \end{bmatrix} \\
+  \mathbf{y} &= \begin{bmatrix} 1 \\ 1 \\ -1 \end{bmatrix} \\
 \end{align*}
 
-we typically take $\xi_{i}$ as the *hinge loss* of a point.
+solve the SVM problem by hand.
 
-## A Slight Extension: Hinge Loss
+---
 
-We define hinge loss for a data point at $(x_{i}, y_{i})$ as:
+The steps given are:
+
+1. Set up the Gram matrix for labelled data
+2. Set up the expression to be minimised
+3. Take partial derivatives
+4. Set to zero and solve for each multiplier
+5. Solve for $w$
+6. Solve for $t$
+7. Solve for $m$
+
+---
+
+1. Set up the Gram matrix for labelled data
+
+The Gram matrix is just the product $\mathbf{X'} (\mathbf{X'})^T$.
+
 \begin{align*}
-  \xi_{i} = \max(0, 1 - y_{i}(w^{T}x_{i} - b))
+  \mathbf{X'} (\mathbf{X'})^T &= \begin{bmatrix} 1 & 3 \\ 2 & 1 \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 1 & 2 & 0 \\ 3 & 1 & -1 \end{bmatrix} \\
+  \only<2->{&= \begin{bmatrix} 10 & 5 & -1 \\ 5 & 5 & -1 \\ -3 & -1 & 1 \end{bmatrix}} \\
+\end{align*}
+
+---
+
+2. Set up the expression to be minimised
+
+Recall the dual problem for the SVM:
+
+\begin{align*}
+  \only<1>{\argmin_{\alpha_1, \ldots, \alpha_n} -\frac{1}{2} \sum_{i=1}^{n}\sum_{j=1}^{n} \alpha_{i} \alpha_{j} y_{i} y_{j} (x_{i} \cdot x_{j}) + \sum_{i=1}^{n} \alpha_{i}} \\
+  \only<2->{\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \sum_{i=1}^{3}\sum_{j=1}^{3} \alpha_{i} \alpha_{j} y_{i} y_{j} \mathbf{G}[i,j] + \sum_{i=1}^{3} \alpha_{i}} \\
+  \only<1>{\text{subject to } &\sum_{i=1}^{n} \alpha_{i}y_{i} = 0 \\
+   &\alpha_{i} \geq 0 \text{ for } i = 1, \ldots, n\\}
+  \only<2->{\text{subject to } &\sum_{i=1}^{3} \alpha_{i}y_{i} = 0 \\
+   &\alpha_{i} \geq 0 \text{ for } i = 1, \ldots, 3\\}
+\end{align*}
+
+---
+
+Recall the gram matrix:
+\begin{align*}
+  \mathbf{G} &= \begin{bmatrix} 10 & 5 & -1 \\ 5 & 5 & -1 \\ -3 & -1 & 1 \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+  &\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \sum_{i=1}^{3}\sum_{j=1}^{3} \alpha_{i} \alpha_{j} y_{i} y_{j} \mathbf{G}[i,j] + \sum_{i=1}^{3} \alpha_{i} \\
+  \only<2->{&\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \left(10\alpha_1^2 + 10\alpha_1\alpha_2 - 6\alpha_1\alpha_3 + 5 \alpha_2^2 - 2\alpha_2\alpha_3 + \alpha_3^2\right) + \alpha_1 + \alpha_2 + \alpha_3}
+\end{align*}
+
+---
+
+If we look at the constraints ($\sum_i \alpha_i y_i = 0$),
+
+\begin{align*}
+  \sum_{i=1}^3 \alpha_i y_i &= 0 \\
+  \only<2->{\alpha_1 + \alpha_2 - \alpha_3 &= 0 \\}
+  \only<2->{\alpha_3 &= \alpha_1 + \alpha_2  \\}
+\end{align*}
+
+
+Therefore if we substitute in $\alpha_3 = \alpha_1 + \alpha_2$, out final maximisation problem becomes:
+\begin{align*}
+  \only<2>{&\argmin_{\alpha_1, \alpha_2} -\frac{1}{2} \left(10\alpha_1^2 + 10\alpha_1\alpha_2 - 6\alpha_1(\alpha_1 + \alpha_2) + 5 \alpha_2^2 - 2\alpha_2(\alpha_1 + \alpha_2) + (\alpha_1 + \alpha_2)^2\right) + \\
+  &\quad \alpha_1 + \alpha_2 + (\alpha_1 + \alpha_2) \\}
+  \only<3->{&\argmin_{\alpha_1, \alpha_2} -\frac{1}{2} \left(5\alpha_1^2 + 4\alpha_1\alpha_2 + 3 \alpha_2^2\right) + 2\alpha_1 + 2\alpha_2}
+\end{align*}
+
+--- 
+
+3. Take partial derivatives
+
+\begin{align*}
+ &\argmin_{\alpha_1, \alpha_2} -\frac{1}{2} \left(5\alpha_1^2 + 4\alpha_1\alpha_2 + 3 \alpha_2^2\right) + 2\alpha_1 + 2\alpha_2
 \end{align*}
 
 \pause
 
-\centering
-\includegraphics[scale=0.175]{tut5_hinge_loss.png}
+\begin{align*}
+  \frac{\partial}{\partial \alpha_1} &= -5\alpha_1 - 2\alpha_2 + 2 \\
+  \frac{\partial}{\partial \alpha_2} &= -2\alpha_1 - 4\alpha_2 + 2 \\
+\end{align*}
 
 ---
 
-So, the function we minimise is essentially:
+4. Set to zero and solve for each multiplier
 
+For $\alpha_1$,
 \begin{align*}
-  \argmin_{w, t, \xi} \frac{1}{2} \norm{w}^{2} + C  \max(0, 1 - y_{i}(w^{T}x_{i} - b)) \\
+  -5\alpha_1 - 2\alpha_2 + 2 &= 0\\
+  \alpha_1 &= -\frac{(2\alpha_2 - 2)}{5}\\
 \end{align*}
 
+\pause
+
+For $\alpha_2$,
 \begin{align*}
-  \text{subject to } y_{i} (\langle x_{i}, w \rangle - t) \geq 1 - \max(0, 1 - y_{i}(w^{T}x_{i} - b))
+  -2\alpha_1 - 4\alpha_2 + 2 &= 0\\
+  \frac{2}{5}(2\alpha_2 - 2) - 4\alpha_2 + 2 &= 0\\
+  2\alpha_2 - 2 - 10\alpha_2 + 5 &= 0\\
+  \alpha_2 = \frac{3}{8} \quad\quad \alpha_1 = \frac{1}{4} \quad\quad \alpha_3 = \frac{5}{8}\\
+\end{align*}
+
+
+---
+
+5. Solve for $w$
+
+What did we define $w$ as for the dual problem?
+
+\pause
+\begin{align*}
+  w = \sum_{i=1}^n \alpha_i y_i \mathbf{x_i}
+\end{align*}
+
+\pause
+
+So, in this case:
+\begin{align*}
+  w &= \frac{1}{4} x_1 + \frac{3}{8} x_2 + \frac{5}{8} x_3 \\
+  &= \frac{1}{4} \begin{bmatrix} 1 \\ 3 \end{bmatrix} + \frac{3}{8} \begin{bmatrix} 2 \\ 1 \end{bmatrix} + \frac{5}{8} \begin{bmatrix} 0 \\ 1 \end{bmatrix} \\
+  &= \begin{bmatrix} 1 \\ \frac{1}{2} \end{bmatrix}
+\end{align*}
+
+
+---
+
+6. Solve for $t$
+
+The constraint $y_i (\langle w, x_i \rangle - t) = 1$ for all support vectors. We can use the 3rd data point:
+
+\begin{align*}
+  y_3(\langle w, x_3\rangle - t) &= 1 \\
+  -\left(\frac{1}{2} - t\right) &= 1 \\
+  t &= \frac{3}{2} \\
+\end{align*}
+
+7. Solve for $m$
+
+\begin{align*}
+  m &= \frac{1}{\norm{w}} = \frac{2}{\sqrt{5}} \\
 \end{align*}
 
 

@@ -73,6 +73,11 @@ $\alpha_{i}$ represents the *importance* of a data point $(x_{i}, y_{i})$.
 
 ## The Dual/Kernel Perceptron
 
+**Provide an explanation of how the dual version of the perceptron relates to the original.**
+
+
+---
+
 Recall the *primal* perceptron:
 
 :::: columns
@@ -176,6 +181,10 @@ Let's revisit the XOR.
 
 ---
 
+**Extend the dual perceptron to learn the XOR function.**
+
+---
+
 A solution:
 
 \pause
@@ -222,7 +231,7 @@ For the positive class:
 
 ---
 
-We may have a problem, recall the **dual perceptron**.
+To use the **dual perceptron** on our transformed data, we simply need to redefine it.
 
 \begin{algorithmic}
   \State $converged \gets 0$
@@ -238,6 +247,7 @@ We may have a problem, recall the **dual perceptron**.
   \EndWhile
 \end{algorithmic}
 
+
 ---
 
 Recall the transformation $\phi : \mathbb{R}^{p} \rightarrow \mathbb{R}^{k}$. \pause For an arbitrarily large $k$,
@@ -250,11 +260,11 @@ Recall the transformation $\phi : \mathbb{R}^{p} \rightarrow \mathbb{R}^{k}$. \p
       \end{bmatrix} \\
 \end{align*}
 
-the Gram matrix becomes far too complex to compute.
+the Gram matrix becomes costly to compute.
 
 # The Kernel Trick
 
-An absolute mathemagical idea which allows us to calculate the values of the Gram matrix for cheap.
+**Show how computational issues in the previous section can be mitigated by using the Kernel trick.**
 
 Recall the transformation to the XOR data:
 \begin{align*}
@@ -292,7 +302,24 @@ So our Gram matrix is:
 
 \pause
 \vspace{-0.7cm}
-**Why is this useful?**
+**Why is this useful?** \pause We've essentially gotten a 6-dimensional transformation with the cost of a 2-dimensional dot-product.
+
+---
+
+The kernel perceptron is now defined as:
+
+\begin{algorithmic}
+  \State $converged \gets 0$
+  \While{not $converged$}
+  \State $converged \gets 1$
+  \For{$x_{i} \in X, y_{i} \in y$}
+  \If{$y_{i} \sum_{j=1}^{N} \alpha_{j} y_{j} k(x_{j}, x_{i}) \leq 0$}
+  \State $\alpha_{i} \gets \alpha_{i} + 1$
+  \State $converged \gets 0$
+  \EndIf
+  \EndFor
+  \EndWhile
+\end{algorithmic}
 
 # Support Vector Machines
 

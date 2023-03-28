@@ -476,7 +476,7 @@ The Gram matrix is just the product $\mathbf{X'} (\mathbf{X'})^T$.
 
 \begin{align*}
   \mathbf{X'} (\mathbf{X'})^T &= \begin{bmatrix} 1 & 3 \\ 2 & 1 \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 1 & 2 & 0 \\ 3 & 1 & -1 \end{bmatrix} \\
-  \only<2->{&= \begin{bmatrix} 10 & 5 & -1 \\ 5 & 5 & -1 \\ -3 & -1 & 1 \end{bmatrix}} \\
+  \only<2->{&= \begin{bmatrix} 10 & 5 & -3 \\ 5 & 5 & -1 \\ -3 & -1 & 1 \end{bmatrix}} \\
 \end{align*}
 
 ---
@@ -487,7 +487,7 @@ Recall the dual problem for the SVM:
 
 \begin{align*}
   \only<1>{\argmin_{\alpha_1, \ldots, \alpha_n} -\frac{1}{2} \sum_{i=1}^{n}\sum_{j=1}^{n} \alpha_{i} \alpha_{j} y_{i} y_{j} (x_{i} \cdot x_{j}) + \sum_{i=1}^{n} \alpha_{i}} \\
-  \only<2->{\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \sum_{i=1}^{3}\sum_{j=1}^{3} \alpha_{i} \alpha_{j} y_{i} y_{j} \mathbf{G}[i,j] + \sum_{i=1}^{3} \alpha_{i}} \\
+  \only<2->{\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \sum_{i=1}^{3}\sum_{j=1}^{3} \alpha_{i} \alpha_{j} \mathbf{G}[i,j] + \sum_{i=1}^{3} \alpha_{i}} \\
   \only<1>{\text{subject to } &\sum_{i=1}^{n} \alpha_{i}y_{i} = 0 \\
    &\alpha_{i} \geq 0 \text{ for } i = 1, \ldots, n\\}
   \only<2->{\text{subject to } &\sum_{i=1}^{3} \alpha_{i}y_{i} = 0 \\
@@ -498,11 +498,11 @@ Recall the dual problem for the SVM:
 
 Recall the gram matrix:
 \begin{align*}
-  \mathbf{G} &= \begin{bmatrix} 10 & 5 & -1 \\ 5 & 5 & -1 \\ -3 & -1 & 1 \end{bmatrix}
+  \mathbf{G} &= \begin{bmatrix} 10 & 5 & -3 \\ 5 & 5 & -1 \\ -3 & -1 & 1 \end{bmatrix}
 \end{align*}
 
 \begin{align*}
-  &\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \sum_{i=1}^{3}\sum_{j=1}^{3} \alpha_{i} \alpha_{j} y_{i} y_{j} \mathbf{G}[i,j] + \sum_{i=1}^{3} \alpha_{i} \\
+  &\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \sum_{i=1}^{3}\sum_{j=1}^{3} \alpha_{i} \alpha_{j} \mathbf{G}[i,j] + \sum_{i=1}^{3} \alpha_{i} \\
   \only<2->{&\argmin_{\alpha_1, \alpha_2, \alpha_3} -\frac{1}{2} \left(10\alpha_1^2 + 10\alpha_1\alpha_2 - 6\alpha_1\alpha_3 + 5 \alpha_2^2 - 2\alpha_2\alpha_3 + \alpha_3^2\right) + \alpha_1 + \alpha_2 + \alpha_3}
 \end{align*}
 

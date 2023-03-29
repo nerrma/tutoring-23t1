@@ -576,7 +576,7 @@ What did we define $w$ as for the dual problem?
 So, in this case:
 \begin{align*}
   w &= \frac{1}{4} x_1 + \frac{3}{8} x_2 + \frac{5}{8} x_3 \\
-  &= \frac{1}{4} \begin{bmatrix} 1 \\ 3 \end{bmatrix} + \frac{3}{8} \begin{bmatrix} 2 \\ 1 \end{bmatrix} + \frac{5}{8} \begin{bmatrix} 0 \\ 1 \end{bmatrix} \\
+  &= \frac{1}{4} \begin{bmatrix} 1 \\ 3 \end{bmatrix} + \frac{3}{8} \begin{bmatrix} 2 \\ 1 \end{bmatrix} - \frac{5}{8} \begin{bmatrix} 0 \\ 1 \end{bmatrix} \\
   &= \begin{bmatrix} 1 \\ \frac{1}{2} \end{bmatrix}
 \end{align*}
 

@@ -240,5 +240,6 @@ If we have a dataset $D = (X, y)$ where $X \in \mathbb{R}^{n \times p}$ and $y \
   \State $w_{i}^{(t+1)} \gets w_j^{(t)} \exp(\alpha_{t}) \qquad j \text{ where } y_{j} \neq M_{t}(x_{j})$
   \State $w_{j}^{(t+1)} \gets w_j^{(t)} \exp(-\alpha_{t}) \qquad j \text{ where } y_{j} = M_{t}(x_{j})$
   \EndFor
+
   \Return $M(X) =\text{sgn}\left(\sum_{t=1}^{T} \alpha_{t} M_{t}(X)\right)$
 \end{algorithmic}

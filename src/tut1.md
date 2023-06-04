@@ -9,7 +9,7 @@ header-includes: |
 	\DeclareMathOperator*{\argmax}{arg\,max}
 	\DeclareMathOperator*{\argmin}{arg\,min}
 title: "Regression I"
-author: "COMP9417, 23T1"
+author: "COMP9417, 23T2"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"

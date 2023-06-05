@@ -284,11 +284,14 @@ For a vector $v$,
 
 ### Vector Calculus
 
-Say we have our weight vector $w$ and a constant vector $c$,
+If $u$ is a vector in $\mathbb{R}^n$ and $v \in \mathbb{R}^n$ is a fixed vector, then
 \begin{align*}
-	\frac{\partial (c w)}{\partial w} &= c^{T} \\
-	\frac{\partial (w^{T} c w)}{\partial w} &= 2cw \\
-	\frac{\partial (c w^{2})}{\partial w} &= 2cw \\
+	\frac{\partial v^T u}{\partial u} &= v \\
+\end{align*}
+
+If $A \in \mathbb{R}^{n \times n}$ is a fixed matrix,
+\begin{align*}
+	\frac{\partial (u^{T} c u)}{\partial u} &= Au + A^Tu \\
 \end{align*}
 
 # Question 2 (a $\to$ h)

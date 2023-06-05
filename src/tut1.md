@@ -29,7 +29,7 @@ What you'll get from this course:
 How to do well:
 
 - Fully understand tut questions from week to week (they pile up)
-- Don't be afraid of math or notation, break it all down
+- Don't be afraid of notation, break it all down
 - Keep researching
 
 

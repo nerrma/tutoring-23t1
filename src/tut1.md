@@ -284,14 +284,14 @@ For a vector $v$,
 
 ### Vector Calculus
 
-If $u$ is a vector in $\mathbb{R}^n$ and $v \in \mathbb{R}^n$ is a fixed vector, then
+If $u \in \mathbb{R}^n$ and $v \in \mathbb{R}^n$ is a fixed vector, then
 \begin{align*}
 	\frac{\partial v^T u}{\partial u} &= v \\
 \end{align*}
 
 If $A \in \mathbb{R}^{n \times n}$ is a fixed matrix,
 \begin{align*}
-	\frac{\partial (u^{T} c u)}{\partial u} &= Au + A^Tu \\
+	\frac{\partial (u^{T} A u)}{\partial u} &= Au + A^Tu \\
 \end{align*}
 
 # Question 2 (a $\to$ h)

@@ -194,15 +194,15 @@ where $p_i = \sigma(w^{T}x_{i})$.
 
 \begin{align*}
 	\sigma(z) &= \frac{1}{1 + e^{-z}} \\
-	\only<2->{\sigma^\prime(z) &= \frac{-e^{-z}}{(1 + e^{-z})^2} \\}
-	\only<3->{&= \frac{-e^{-z} - 1 + 1}{(1 + e^{-z})^2}} \\
-	\only<4->{&= \frac{1}{(1 + e^{-z})^2} -\frac{1}{1 + e^{-z}} \\}
+	\only<2->{\sigma^\prime(z) &= \frac{e^{-z}}{(1 + e^{-z})^2} \\}
+	\only<3->{&= \frac{e^{-z} + 1 - 1}{(1 + e^{-z})^2}} \\
+	\only<4->{&= \frac{1}{1 + e^{-z}} -\frac{1}{(1 + e^{-z})^2} \\}
 	\only<4->{&= \sigma(z) (1 - \sigma(z))}
 \end{align*}
 
 ---
 
-**Therefore, show that $\frac{dp_i}{dw} = p_i (1-p_i) w_i$**
+**Therefore, show that $\frac{dp_i}{dw} = p_i (1-p_i) x_i$**
 
 \pause
 \begin{align*}

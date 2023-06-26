@@ -10,7 +10,7 @@ header-includes: |
 	\graphicspath{ {./images/} }
 	\DeclareMathOperator*{\argmax}{arg\,max}
 	\DeclareMathOperator*{\argmin}{arg\,min}
-title: "Decision Trees"
+title: "Non Parametric Methods"
 author: "COMP9417, 23T2"
 theme: "Frankfurt"
 colortheme: "beaver"
@@ -268,7 +268,7 @@ If we define our two regions as $R_{1}(j, s) = \{X|X_{j} \leq s\}$ and $R_{2}(j,
 \pause
 
 \begin{align*}
-  \min_{j,s} \left[\min_{c_{1}} \sum_{x_{i} \in R_{1}(j, s)} (y_{i} - c_{1})^{2} + \sum_{x_{i} \in R_{2}(j, s)}\min_{c_{2}} (y_{1} - c_{2})^{2} \right]
+  \min_{j,s} \left[\min_{c_{1}} \sum_{y_{i} \in R_{1}(j, s)} (y_{i} - c_{1})^{2} + \sum_{y_{i} \in R_{2}(j, s)}\min_{c_{2}} (y_{i} - c_{2})^{2} \right]
 \end{align*}
 
 Where $\hat{c_{1}} = \text{ave}(y_{i} | x_{i} \in R_{1}), \quad \hat{c_{2}} = \text{ave}(y_{i} | x_{i} \in R_{2})$.
@@ -281,7 +281,7 @@ This essentially finds regions ($R_{1}$ and $R_{2}$) with the minimum variance.
 \centering
 \includegraphics[scale=0.6]{tut4_treg_data.png}
 \begin{align*}
-  \min_{j,s} \left[\min_{c_{1}} \sum_{x_{i} \in R_{1}(j, s)} (y_{i} - c_{1})^{2} + \sum_{x_{i} \in R_{2}(j, s)}\min_{c_{2}} (y_{1} - c_{2})^{2} \right]
+  \min_{j,s} \left[\min_{c_{1}} \sum_{y_{i} \in R_{1}(j, s)} (y_{i} - c_{1})^{2} + \sum_{y_{i} \in R_{2}(j, s)}\min_{c_{2}} (y_{i} - c_{2})^{2} \right]
 \end{align*}
 
 

@@ -17,7 +17,7 @@ header-includes: |
 	\tikzset{weights/.style={basic,rectangle}}
 	\tikzset{functions/.style={basic,circle,fill=blue!10}}
 title: "Neural Learning"
-author: "COMP9417, 23T1"
+author: "COMP9417, 23T2"
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
